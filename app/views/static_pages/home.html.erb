@@ -5,6 +5,12 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
+      <section class="followings_info">
+        <%= link_to "followings", '/users/:id/followings' %>
+      </section>
+      <section class="followers_info">
+        <%= link_to "followers", '/users/:id/followers' %>
+      </section>
       <section class="micropost_form">
         <%= render 'shared/micropost_form' %>
       </section>

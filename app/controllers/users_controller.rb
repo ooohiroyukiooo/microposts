@@ -33,6 +33,14 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+  def followings
+    @followings = current_user.following_users
+  end
+  
+  def followers
+    @followed = current_user.followed_users
+  end
 
   private
 

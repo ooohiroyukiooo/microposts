@@ -8,9 +8,15 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   get 'edit', to: 'users#edit'
 
+  resources :users do
+      member do
+      get :followings
+      get :followers
+    end
+  end
+
+  #resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users
   resources :microposts
   resources :relationships, only: [:create, :destroy]
-
 end
