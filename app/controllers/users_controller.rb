@@ -35,11 +35,15 @@ class UsersController < ApplicationController
   end
   
   def followings
-    @followings = current_user.following_users
+    @user = User.find(params[:id])
+    @followings = @user.following_users
+    #@followings = current_user.following_users　自分のフォロー、フォロワーの取得ならこれでOK!
   end
   
   def followers
-    @followed = current_user.followed_users
+    @user = User.find(params[:id])
+    @followed = @user.followed_users
+    #@followed = current_user.followed_users　自分のフォロー、フォロワーの取得ならこれでOK!
   end
 
   private
