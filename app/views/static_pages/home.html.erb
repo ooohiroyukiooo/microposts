@@ -6,19 +6,23 @@
         <%= render 'shared/user_info' %>
       </section>
       <section class="followings_info">
-        <%= link_to "followings", '/users/:id/followings' %>
+       <%# 現在のユーザー[current_user.id]がフォローしている人の一覧[id]を表示 %>
+       <%= link_to 'followings', followings_user_path(current_user.id) %> 
+       <%# <%= link_to 'followings', followings_user_path(params[:id]) %> 
+       <%# <%= link_to "followings", "/users/#{params[:id]}/followings" 別の記述方法① %>
+       <%# <%= link_to "followings", "/users/#{@id}/followings" 別の記述方法② %>
+       <%# <%= link_to "followings", '/users/:id/followings' 間違った記述方法%>
       </section>
       <section class="followers_info">
-        <%= link_to "followers", '/users/:id/followers' %>
+       <%# 現在のユーザー[current_user.id]をフォローしている人の一覧[id]を表示 %>
+       <%= link_to 'followers', followers_user_path(current_user.id) %> 
+       <%# <%= link_to 'followers', followers_user_path(params[:id]) %> 
+       <%# <%= link_to "followers", '/users/:id/followers' %>
       </section>
       <section class="micropost_form">
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-    <div class="col-md-8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
   </div>
 <% else %>
   <div class="center jumbotron">

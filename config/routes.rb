@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'edit', to: 'users#edit'
 
   resources :users do
-      member do
+    member do
       get :followings
       get :followers
     end
