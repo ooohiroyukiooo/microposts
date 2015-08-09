@@ -1,0 +1,2 @@
+$("#favorite_form").html("<%= escape_javascript(render('microposts/unfavorite')) %>");
+$("#favorited").html('<%= @micropost.favorited_microposts.count %>');

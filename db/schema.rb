@@ -11,14 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708123509) do
+ActiveRecord::Schema.define(version: 20150808065544) do
 
-  create_table "follows", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "inverse_follower_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+  create_table "favoriterelationships", force: :cascade do |t|
+    t.integer  "micropost_id"
+    t.integer  "fuser_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
+
+  add_index "favoriterelationships", ["fuser_id"], name: "index_favoriterelationships_on_fuser_id"
+  add_index "favoriterelationships", ["micropost_id", "fuser_id"], name: "index_favoriterelationships_on_micropost_id_and_fuser_id", unique: true
+  add_index "favoriterelationships", ["micropost_id"], name: "index_favoriterelationships_on_micropost_id"
 
   create_table "microposts", force: :cascade do |t|
     t.integer  "user_id"

@@ -33,7 +33,8 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-  
+
+=begin
   def followings
     @user = User.find(params[:id])
     @followings = @user.following_users
@@ -45,9 +46,13 @@ class UsersController < ApplicationController
     @followed = @user.followed_users
     #@followed = current_user.followed_users　自分のフォロー、フォロワーの取得ならこれでOK!
   end
+=end
+  
+  def favorites
+    @user = User.find(params[:id])
+  end
 
   private
-
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
